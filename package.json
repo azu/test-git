@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/azu/test-git/issues"
   },
-  "homepage": "https://github.com/azu/test-git#readme"
+  "homepage": "https://github.com/azu/test-git#readme",
+  "ci:versionup:patch": "npm version patch --no-push --no-git-tag-version --yes && npm run commit-version",
+  "ci:versionup:minor": "npm version minor --no-push --no-git-tag-version --yes && npm run commit-version",
+  "ci:versionup:major": "npm version major --no-push --no-git-tag-version --yes && npm run commit-version",
+  "commit-version": "git add . && git commit -m \"chore(release): v$(node -p 'require(\"./package.json\").version')\"",
+  "ci:release": "npm publish --yes"
 }
